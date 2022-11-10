@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-    res.send("Express on Vercel");
+    res.send(`${process.env.TEST}`);
 })
 
 const port = process.env.PORT || 5000;
