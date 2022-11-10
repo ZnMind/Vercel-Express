@@ -1,5 +1,4 @@
-import express from 'express';
-
+const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
@@ -9,4 +8,4 @@ app.get("/", (req, res) => {
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port: ${port}`));
 
-export default app;
+module.exports = app;
