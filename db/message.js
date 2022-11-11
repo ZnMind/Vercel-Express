@@ -1,8 +1,5 @@
 const { Query } = require("./index.js");
 
-/* function all() {
-    Query('select * from messages');
-} */
 const all = () => Query('SELECT * FROM messages');
 
 const one = (username) => Query('Select * from messages where username = ?', [username]);

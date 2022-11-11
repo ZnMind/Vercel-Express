@@ -17,13 +17,6 @@ module.exports.Query = (query, values) => {
     });
 }
 
-/* async function query(sql, params) {
-    const connectionDb = await mysql.createConnection(connection);
-    const [results, ] = await connectionDb.execute(sql, params);
-
-    return results;
-} */
-
 const message = require("./message.js");
 
 module.exports = { message };
