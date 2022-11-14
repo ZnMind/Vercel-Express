@@ -9,9 +9,18 @@ router.get("/:username?", async (req, res) => {
             let messages = await db.message.one(username);
             res.json(messages);
         } else {
-            let messages = await db.message.all();
+            let messages = await db.message.allReply();
             res.json(messages);
         }
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.get("/reply/all", async (req, res) => {
+    try {
+        let replies = await db.message.allReply();
+        res.json(replies);
     } catch (error) {
         console.log(error);
     }
@@ -21,6 +30,16 @@ router.post("/", async (req, res) => {
     try {
         const body = req.body;
         const dbRes = await db.message.insert(body.name, body.message);
+        res.status(200).json(dbRes);
+    } catch (error) {
+        console.log(error)
+    }
+});
+
+router.post("/reply/all", async (req, res) => {
+    try {
+        const body = req.body;
+        const dbRes = await db.message.insertReply(body.replyId, body.name, body.message);
         res.status(200).json(dbRes);
     } catch (error) {
         console.log(error)
