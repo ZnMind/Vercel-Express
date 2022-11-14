@@ -2,14 +2,14 @@ const express = require("express");
 const db = require("../db/index.js");
 const router = express.Router();
 
-router.get("/username/:username?", async (req, res) => {
+router.get("/:username?", async (req, res) => {
     try {
         let username = req.params.username;
         if (username) {
             let messages = await db.message.one(username);
             res.json(messages);
         } else {
-            let messages = await db.message.allReply();
+            let messages = await db.message.all();
             res.json(messages);
         }
     } catch (error) {
